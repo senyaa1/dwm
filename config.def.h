@@ -51,6 +51,7 @@ static const Rule rules[] = {
 	{ "Gimp",    NULL,     NULL,           0,         0,			1,          0,           0,        0,				-1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,			0,          0,          -1,        0,				-1 },
 	{ "St",      NULL,     NULL,           0,         0,			0,          1,           0,        1,				-1 },
+	{ "sxiv",    NULL,     NULL,           0,         1,			1,          0,           0,        1,				-1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,			0,          0,           1,        0,				-1 }, /* xev */
 };
 
@@ -89,17 +90,19 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *browsercmd[] = { "qutebrowser", NULL};
+static const char *choosewlprcmd[] = { "bash /home/senyaa/scripts/wallpaper", NULL};
 
 /*
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "normbgcolor",        STRING,  &normbgcolor },
-		{ "normbordercolor",    STRING,  &normbordercolor },
-		{ "normfgcolor",        STRING,  &normfgcolor },
-		{ "selbgcolor",         STRING,  &selbgcolor },
-		{ "selbordercolor",     STRING,  &selbordercolor },
-		{ "selfgcolor",         STRING,  &selfgcolor },
+		{ "background",        STRING,  &normbgcolor },
+		{ "color0",			   STRING,  &normbordercolor },
+		{ "foreground",         STRING,  &normfgcolor },
+		{ "color8",		    	STRING,  &selbgcolor },
+		{ "color8",				STRING,  &selbordercolor },
+		{ "foreground",         STRING,  &selfgcolor },
 		{ "borderpx",          	INTEGER, &borderpx },
 		{ "snap",          		INTEGER, &snap },
 		{ "showbar",          	INTEGER, &showbar },
@@ -113,7 +116,9 @@ ResourcePref resources[] = {
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY, 	                XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY, 	                    XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY, 	                    XK_backslash, spawn,       {.v = browsercmd } },
+	{ MODKEY,				        XK_o,      spawn,          {.v = choosewlprcmd} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
