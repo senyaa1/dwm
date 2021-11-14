@@ -10,7 +10,7 @@ static int topbar    	            = 1;        /* 0 means bottom bar */
 static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          = { "Liberation Mono:pixelsize=20:antialias=true" };
+static const char *fonts[]          = { "Liberation Mono:pixelsize=35:antialias=true" };
 static const char dmenufont[]       = "monospace:size=10";
 
 static const unsigned int baralpha = 0xd0;
@@ -90,7 +90,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *browsercmd[] = { "qutebrowser", NULL};
+static const char *browsercmd[] = { "firefox", NULL};
 static const char *choosewlprcmd[] = { "bash /home/senyaa/scripts/wallpaper", NULL};
 
 /*
