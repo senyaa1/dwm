@@ -91,7 +91,6 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "firefox", NULL};
-static const char *choosewlprcmd[] = { "bash /home/senyaa/scripts/wallpaper", NULL};
 
 /*
  * Xresources preferences to load at startup
@@ -118,7 +117,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY, 	                    XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY, 	                    XK_backslash, spawn,       {.v = browsercmd } },
-	{ MODKEY,				        XK_o,      spawn,          {.v = choosewlprcmd} },
+	{ MODKEY,				        XK_o,      spawn,          SHCMD("/home/senyaa/scripts/wallpaper") },
+	{ MODKEY,				        XK_s,      spawn,          SHCMD("/home/senyaa/scripts/screenshot") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
